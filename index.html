@@ -12,13 +12,17 @@
         <div id="corpo">
             <h2>Buscar Pokemon</h2>
             <input type="text" id="search" placeholder="Digite o nome da cidade">
-            <button onclick="buscarpokemon()">Buscar</button>
+            <button onclick="buscarpokemon()">Buscar <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-search-icon lucide-search"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg></button>
             <div id="resultado"></div>
         </div>
     </div>
 
     <script>
         function buscarpokemon() {
+            const resultado = document.getElementById('resultado')
+            if(resultado){
+                resultado.style.display='block'
+            }
             const pokemon = document.getElementById('search').value;
             if (!pokemon) {
                 alert("Por favor, digite o nome de um Pokemon.");
@@ -38,15 +42,18 @@
                     //}
                     
                     document.getElementById('resultado').innerHTML = `
+                        <div id="divimg">
+                        <img id="imgpokemon" src="${data.sprites.other["official-artwork"].front_default}" alt="">
+                        </div>
+                        <div id='resultstyle'>
                         <p><strong>Pokemon:</strong> ${data.name}</p>
                         <p><strong>Peso:</strong> ${data.weight}</p>
                         <p><strong>Altura:</strong> ${data.height}</p>
                         <p><strong>Habilidades:</strong> </p>
                         <p>${data.abilities[0].ability.name} </p>
                         <p>${data.abilities[1].ability.name} </p>
-                        <img src="${data.sprites.front_default}" alt="">
                         <audio id="" controls><source src="${data.cries.legacy}" type="audio/ogg"></audio>
-
+                        </div>
                     `;
 
                     

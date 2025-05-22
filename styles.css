@@ -24,12 +24,41 @@ body{
     top: 50px;
     width: 50%;
     padding: 2rem;
-    
 }
-
+#resultado{
+    background: linear-gradient(90deg,rgba(255, 255, 255, .2) 50%, rgba(255, 255, 255, .6) 100%);
+    border: 1.5px;
+    border-style: solid;
+    border-radius: 2rem;
+    border-color: #cccc;
+    display: none;
+    padding: 2rem;
+}
 button{
     size: 50px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-block: 1%;
 }
+#imgpokemon{
+    width: 30%;
+    height: auto;
+    padding: 2%;
+}
+#divimg{
+    display: flex;
+    justify-content: center;
+}
+#resultstyle{
+    background-color:rgba(204, 204, 204, .4);
+    border: 1.5px;
+    border-style: solid;
+    border-radius: 2rem;
+    border-color: #cccc;
+    padding: 1rem;
+}
+
 #imgerror{
     width: 35%;
     height: 35%;
