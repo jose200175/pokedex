@@ -30,3 +30,13 @@ body{
 button{
     size: 50px;
 }
+#imgerror{
+    width: 35%;
+    height: 35%;
+    padding: 2%;
+}
+#error{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

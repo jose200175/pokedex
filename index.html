@@ -31,11 +31,11 @@
             fetch(url)
                 .then(response => response.json())
                 .then(data => {
-                    console.log(data.name)
-                    if (data.name == undefined) {
-                        document.getElementById('resultado').innerHTML = "<p>Cidade não encontrada.</p>";
-                        return;
-                    }
+                    //console.log(JSON.parse(data))
+                    //if (JSON.parse(data)) {
+                    //    document.getElementById('resultado').innerHTML = "<p>Cidade não encontrada.</p>";
+                    //    return;
+                    //}
                     
                     document.getElementById('resultado').innerHTML = `
                         <p><strong>Pokemon:</strong> ${data.name}</p>
@@ -51,7 +51,12 @@
 
                     
                 })
-                .catch(error => console.error("Erro na busca:", error));
+                .catch(error => document.getElementById('resultado').innerHTML =`
+                    <div id='error'>
+                    <img id=imgerror src="img/error.jpg" alt="">
+                    <p><strong>Pokemon não encontrado!!!</strong></p>
+                    </div>
+                `);
         }
     </script>
 </body>
