@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="img/icon.png" type="image/png">
+    <title>Busca de Pokemon</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="wrapper">
+        <div id="corpo">
+            <h2>Buscar Pokemon</h2>
+            <input type="text" id="search" placeholder="Digite o nome da cidade">
+            <button onclick="buscarpokemon()">Buscar</button>
+            <div id="resultado"></div>
+        </div>
+    </div>
+
+    <script>
+        function buscarpokemon() {
+            const pokemon = document.getElementById('search').value;
+            if (!pokemon) {
+                alert("Por favor, digite o nome de um Pokemon.");
+                return;
+            }
+            
+            //const apiKey = 'ae8db8fe6964f84218ebe0d8539e9280'; // Substitua pela sua chave de API
+            const url = `https://pokeapi.co/api/v2/pokemon/${encodeURIComponent(pokemon)}`;
+            
+            fetch(url)
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data.name)
+                    if (data.name == undefined) {
+                        document.getElementById('resultado').innerHTML = "<p>Cidade não encontrada.</p>";
+                        return;
+                    }
+                    
+                    document.getElementById('resultado').innerHTML = `
+                        <p><strong>Pokemon:</strong> ${data.name}</p>
+                        <p><strong>Peso:</strong> ${data.weight}</p>
+                        <p><strong>Altura:</strong> ${data.height}</p>
+                        <p><strong>Habilidades:</strong> </p>
+                        <p>${data.abilities[0].ability.name} </p>
+                        <p>${data.abilities[1].ability.name} </p>
+                        <img src="${data.sprites.front_default}" alt="">
+                        <audio id="" controls><source src="${data.cries.legacy}" type="audio/ogg"></audio>
+
+                    `;
+
+                    
+                })
+                .catch(error => console.error("Erro na busca:", error));
+        }
+    </script>
+</body>
+</html>
